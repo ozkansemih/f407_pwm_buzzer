@@ -24,14 +24,14 @@ void pwm_test2(){
 
 	timb.TIM_ClockDivision = 0;
 	timb.TIM_CounterMode = TIM_CounterMode_Up ;
-	timb.TIM_Period = 249;
+	timb.TIM_Period = 249;  // period  TIMx->ARR
 	timb.TIM_Prescaler = 524 ;
 	TIM_TimeBaseInit ( TIM10 , &timb );
 
 	timoc.TIM_OCMode = TIM_OCMode_PWM1 ;
 	timoc.TIM_OCNPolarity = TIM_OCPolarity_High ;
 	timoc.TIM_OutputState = ENABLE ;
-	timoc.TIM_Pulse = 50;
+	timoc.TIM_Pulse = 50;  // TIMx->CCR1 duty cycle 50/( 249+1)  = 20% initialy
 	TIM_OC1Init ( TIM10 , & timoc );
 
 	TIM_OC1PreloadConfig ( TIM10, TIM_OCPreload_Enable );
